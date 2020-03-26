@@ -1,1 +1,1 @@
-from . import thing_HDC1080
+from . import things_HDC1080
