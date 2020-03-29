@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id='HDC1080_create_wizard_form'
+            model='ir.ui.view'>
+            
+        <field name='name'>HDC1080 create form view</field>
+        <field name='model'>hdc1080.create.wizard</field>
+        <field name='arch' type='xml'>
+            <form string="Create new HDC1080 Connection">
+                <sheet>
+                    <group>
+                        <field  name='name'/>
+                    </group>
+                    <group>
+                        <field  name="gate_id"
+                                widget="many2one"/>                       
+                    </group>
+                </sheet>
+                <footer>
+                    <button string='Create'
+                            type='object'
+                            name='create_new_connection'
+                            class='btn-primary'/>
+                    <button string='Cancel'
+                            class='btn-default'
+                            special='cancel'/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Menus  -->
+    <act_window
+        id="action_wizard_HDC1080_create"
+        name="Add HDC1080 sensor"
+        res_model="hdc1080.create.wizard"
+        view_mode="form" target="new" />
+
+    <menuitem
+        id="menu_wizard_HDC1080_create"
+        parent="things.things_menu_gate"
+        action="action_wizard_HDC1080_create"
+    />
+
+</odoo>
