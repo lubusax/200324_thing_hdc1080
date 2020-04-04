@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record id='HDC1080_create_wizard_form'
+    <record id='hdc1080_create_wizard_form'
             model='ir.ui.view'>
             
         <field name='name'>HDC1080 create form view</field>

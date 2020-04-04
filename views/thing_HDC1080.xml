@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="things.things_gate_view_form" />
         <field name="arch" type="xml">
             <field name="can_send" position="after">
-                <field  name="thing_hdc1080_ids"
+                <field  name="thing_HDC1080_ids"
                         widget="one2many"/>
             </field>
         </field>

@@ -7,7 +7,7 @@ class HDC1080CreateWizard(models.TransientModel):
     
     name = fields.Char(
         string= 'Temperature and Relative '+  \
-                'Humidity Sensor Name')
+                'Humidity Sensor Identifier')
     
     gate_id = fields.Many2one('things.gate',
             string='Gate',
@@ -21,5 +21,5 @@ class HDC1080CreateWizard(models.TransientModel):
                 }
 
         self.gate_id.write({
-                'thing_hdc1080_ids' : [(0,0,new_thing)]
+                'thing_HDC1080_ids' : [(0,0,new_thing)]
                 })
