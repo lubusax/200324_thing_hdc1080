@@ -12,4 +12,48 @@
         </field>
     </record>
 
+
+    <record id="things_data_hdc1080_celsius_graph" model="ir.ui.view">
+        <field name="model">things.data.hdc1080.celsius</field>
+        <field name="arch" type="xml">
+            <graph type="bar">
+                <field name="create_date"/>
+                <field name="temperature_celsius" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id='action_temperature_celsius_chart' model='ir.actions.act_window'>
+        <field name="name">Temperature Chart</field>
+        <field name="res_model">things.data.hdc1080.celsius</field>
+        <field name="view_mode">graph</field>
+        <field name="context">{'graph_view_ref': 'thing_HDC1080.things_data_hdc1080_celsius_graph'}</field>
+    </record>
+
+
+    <record id="things_hdc1080_view_form" model="ir.ui.view">
+        <field name="name">HDC1080 Form</field>
+        <field name="model">things.hdc1080</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button
+                        type="action"
+                        name="%(thing_HDC1080.things_data_hdc1080_celsius_graph)d" 
+                        string="Open Temperature Graph" />
+                </header>
+                <group>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                    <group>
+                        <field name="temp_celsius_ids"/>
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <!-- <menuitem id="menu_custom_top_level" name="My Tasks" web_icon="my_project,static/description/icon.png"/>
+    <menuitem id="menu_my_tasks" parent="menu_custom_top_level" action="action_my_tasks" sequence="10" /> -->
 </odoo>

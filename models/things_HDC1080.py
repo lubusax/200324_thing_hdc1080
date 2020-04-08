@@ -18,7 +18,7 @@ class ThingsHDC1080(models.Model):
 class ThingsGate(models.Model):
     _inherit = 'things.gate'
  
-    # Important!: Naming convention: 'thing_' + thingType + '_ids'
+    # Naming convention: 'thing_' + thingType + '_ids'
     # in order to easy reuse the main.py from controller folder
     # in this case: thingType = 'HDC1080' 
     thing_HDC1080_ids = fields.One2many(  
