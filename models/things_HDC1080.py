@@ -5,8 +5,7 @@ class ThingsHDC1080(models.Model):
     _inherit = ['things.basis']
     
     name = fields.Char(
-            string= 'Temperature and Relative '+  \
-            'Humidity Sensor Identifier')
+            string= 'Name/Location/Identifier')
 
     # every thing sends and/or receives data
     # through one and only one gate
@@ -24,5 +23,7 @@ class ThingsGate(models.Model):
     thing_HDC1080_ids = fields.One2many(  
         'things.hdc1080',
         'gate_id', string='T & HR Sensor HDC1080')
+
+
     
 

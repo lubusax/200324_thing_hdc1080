@@ -1,5 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 acl_things_hdc1080,things.hdc1080_default,model_things_hdc1080,,1,0,0,0
 acl_things_hdc1080_admin,things.hdc1080_admin,model_things_hdc1080,things.group_things_admin,1,1,1,1
-acl_things_data_hdc1080_celsius,things.hdc1080_default,model_things_data_hdc1080_celsius,,1,0,0,0
-acl_things_data_hdc1080_celsius_admin,things.hdc1080_admin,model_things_data_hdc1080_celsius,things.group_things_admin,1,1,1,1
+acl_things_data_hdc1080,things.hdc1080_default,model_things_data_hdc1080,,1,0,0,0
+acl_things_data_hdc1080_admin,things.hdc1080_admin,model_things_data_hdc1080,things.group_things_admin,1,1,1,1

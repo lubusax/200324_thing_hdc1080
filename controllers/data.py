@@ -43,7 +43,7 @@ class DataStreamHDC1080(http.Controller):
             }
         
         thingSending.write({
-            'temp_celsius_ids' : [(0,0,newPoint)]
+            'data_ids' : [(0,0,newPoint)]
             })
 
         thingSendingDict = thingSending.sudo().read()[0]
