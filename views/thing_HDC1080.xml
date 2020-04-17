@@ -20,11 +20,17 @@
                 <header>
                     <button
                         type="object"
-                        name="prepareDataForChart" 
+                        name="prepareDataForCharts" 
                         string="Refresh" />
                 </header>
                 <group>
-                    <field name="plotlyChartTemperature" 
+                    <field name="chartTemperature" 
+                    widget="plotly_chart"
+                    nolabel="1"/>
+                    <field name="chartHumidity" 
+                    widget="plotly_chart"
+                    nolabel="1"/>
+                    <field name="chartBattery" 
                     widget="plotly_chart"
                     nolabel="1"/>
                 </group>

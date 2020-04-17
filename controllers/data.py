@@ -19,27 +19,35 @@ class DataStreamHDC1080(http.Controller):
         if thingSending:
             response = {'route known': 'true'}
 
-            newTemperatureCelsius = kwargs.get('temperature celsius') or None
-            newRelativeHumidity = kwargs.get('relative humidity') or None
-            response = self.storeTemperatureCelsiusPoint(
+            newTemperatureCelsius = float(kwargs.get('temperature celsius')) or None
+            newRelativeHumidity = float(kwargs.get('relative humidity')) or None
+            newBatteryLevel = float(kwargs.get('battery level')) or None
+            response = self.storeData(
                             newTemperatureCelsius,
+                            newRelativeHumidity,
+                            newBatteryLevel,
                             thingSending,
                             response)
+
+            #thingSending.sudo().prepareDataForCharts() 
+            # better not, it slows the process too much
 
         else:
             response = {'error': 'unknown route'}
             
         return response
 
-    def storeTemperatureCelsiusPoint(self,
+    def storeData(self,
         newTemperatureCelsius,
+        newRelativeHumidity,
+        newBatteryLevel,
         thingSending,
         response):
 
-        newValue = float(newTemperatureCelsius)
-
         newPoint = {
-            'temperature_celsius' : newValue,
+            'temperature_celsius'   : newTemperatureCelsius,
+            'relative_humidity'     : newRelativeHumidity,
+            'battery_level'         : newBatteryLevel
             }
         
         thingSending.write({

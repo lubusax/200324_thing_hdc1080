@@ -5,9 +5,9 @@ class ThingsGateExtended(ThingsGate):
 
     @http.route()    
     def messageFromGate(self, routeFrom, **kwargs):
-        moduleType = 'HDC1080' # this Variable should be modified
+        moduleType = 'HDC1080' # this Variable is thing type dependent
         ThingModel = http.request.env['things.hdc1080']
-                # this Model should be modified
+                # this Model is thing type dependent
 
         response = super().messageFromGate(routeFrom, **kwargs)
 

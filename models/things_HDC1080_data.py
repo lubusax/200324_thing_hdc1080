@@ -29,29 +29,67 @@ class ThingsHDC1080(models.Model):
         'sensor_id',
         string='data record')
     
-
-    plotlyChartTemperature = fields.Text(
+    chartTemperature = fields.Text(
         string='Plotly Chart Temperature',
-        compute='prepareDataForChart',
+        #compute='prepareDataForCharts',
+        )
+    chartHumidity = fields.Text(
+        string='Plotly Chart Humidity',
+        #compute='prepareDataForCharts',
+        )
+    chartBattery = fields.Text(
+        string='Plotly Chart Battery',
+        #compute='prepareDataForCharts',
         )
 
-    def prepareDataForChart(self):
-        x=[]
-        y=[]
+    def prepareDataForCharts(self):
+        time = []
+        temperature = []
+        humidity = []
+        battery = []
+
         for id in self.data_ids:
-            x.append(id.create_date)
-            y.append(id.temperature_celsius)
-        data = [{'x': x, 'y': y}]
+            time.append(id.create_date)
+            temperature.append(id.temperature_celsius)
+            humidity.append(id.relative_humidity)
+            battery.append(id.battery_level)
 
-        print(data)
+        dataTemperature = [{'x': time, 'y': temperature}]
+        dataHumidity    = [{'x': time, 'y': humidity}]
+        dataBattery     = [{'x': time, 'y': battery}]
 
-        layout = go.Layout(
-            title=self.name,
+        layoutTemperature = go.Layout(
+            title=self.name + '- Temperature Chart',
             xaxis=dict(title='Time'),
             yaxis=dict(title='Temperature [°C]')
             )
 
-        self.plotlyChartTemperature = plotly.offline.plot(
-            dict(data=data, layout=layout),
+        layoutHumidity = go.Layout(
+            title=self.name + '- Relative Humidity Chart',
+            xaxis=dict(title='Time'),
+            yaxis=dict(title='Rel. Humidity [%]')
+            )
+        
+        layoutBattery = go.Layout(
+            title=self.name + '- Battery Level Chart',
+            xaxis=dict(title='Time'),
+            yaxis=dict(title='Voltage [V]')
+            )
+
+        self.chartTemperature = plotly.offline.plot(
+            dict(data=dataTemperature, layout=layoutTemperature),
             include_plotlyjs=False,
             output_type='div')
+        
+        self.chartHumidity = plotly.offline.plot(
+            dict(data=dataHumidity, layout=layoutHumidity),
+            include_plotlyjs=False,
+            output_type='div')
+
+        self.chartBattery = plotly.offline.plot(
+            dict(data=dataBattery, layout=layoutBattery),
+            include_plotlyjs=False,
+            output_type='div')
+
+        return True
+
